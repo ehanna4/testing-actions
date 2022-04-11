@@ -17,7 +17,9 @@ jobs:
     if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     steps:
-    - run: |
-        echo PR #${{ github.event.number }} has been merged
-        git branch -d  #${{ github.event.pull_request.sha }}
-        
+    - name: Delete merged branch
+      uses: koj-co/delete-merged-action@master
+      with:
+        branches: "!master, !development, *"
+      env:
+        GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
