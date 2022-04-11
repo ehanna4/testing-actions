@@ -27,4 +27,4 @@ jobs:
       - name: Run a one-line script
         env:
           BRANCH: ${{ github.head_ref }}
-        run: echo "Branch is ... ${BRANCH}"
+        run: echo "Branch is ... ${{ github.head_ref }}"
