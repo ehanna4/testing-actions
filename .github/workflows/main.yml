@@ -19,4 +19,5 @@ jobs:
     steps:
     - run: |
         echo PR #${{ github.event.number }} has been merged
-        delete-branch: true
+        git branch -d  #${{ github.event }}
+        
