@@ -1,0 +1,13 @@
+name: Delete Feature Branch on Merge to Development Branch
+on: 
+  push:
+    branches:
+  - development
+    branches-ignore:
+  - master
+
+jobs:
+ steps:
+ - name: Delete Branch 
+ run: git branch -d <branch-name>
+ GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
