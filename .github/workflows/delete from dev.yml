@@ -20,6 +20,6 @@ jobs:
     - name: Delete merged branch
       uses: koj-co/delete-merged-action@master
       with:
-        branches: "hotfix*, 'hot-fix*'"
+        branches: "hotfix*, hot-fix*"
       env:
         GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
