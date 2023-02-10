@@ -4,9 +4,11 @@ name: CI
 
 # Controls when the workflow will run
 on:
-  push:
+  pull_request:
+    types:
+      - closed
     branches:
-    - 'master'
+      - 'master'
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -15,11 +17,12 @@ jobs:
   merge_job:
     # this job will only run if the PR has been merged
     if: github.event.pull_request.merged == true
+    if: github.event.push.branch == 'master'
     runs-on: ubuntu-latest
     steps:
     - name: Delete merged branch
       uses: koj-co/delete-merged-action@master
       with:
-        branches: "!master, !development, !hot-fix*, !hotfix*, *"
+        branches: "!development, !hot-fix*, !hotfix*, *"
       env:
         GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
